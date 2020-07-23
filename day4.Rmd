@@ -16,6 +16,9 @@ and there is no feedback between the different pools.
 ```
 
 2. Use k-rates of 0.8, 0.7, 0.09 and assume mineralization of 10 units at a delta value of 5per mil to run the model for 100 years at monthly resolution. Explain the results (use getC(model) and getReleaseFlux(model))
+
+In the beginning, the Ammonium pool is biggest, than the Nitrate pool and the plant sink is smallest. After a while, nitrification makes nitrate from the ammonium and the nitrate pool becomes bigger. But not a lot because the nitrate is stored in the plant sink. Eventually the system reaches a balanced state where the plant sink is biggest. 
+The release flux of ammonium is higher than that of nitrate becuse the decomposition rate of ammonium is bigger. Because we took two times a transfer % of 95% an NO2 release of 5% (instead of 0.1-10% and 1-10%), we can compare the release fluxes based on the decomposition rate. 
 ```{r}
 
 ```
