@@ -93,4 +93,6 @@ sens_alpha <- sapply(seq(0.001, 0.1, 0.005), helper)
 plot(seq(0.001, 0.1, 0.005), sens_alpha, xlab = "alpha", ylab = "delta", pch = 20)
 
 
+# test
+
 
