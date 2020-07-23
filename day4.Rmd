@@ -6,6 +6,9 @@ output: html_notebook
 
 1. Create a model in which the ammonium pool is supplied by Mineralization of SOM. Ammonium is subsequently nitrified to nitrate. During the process, N2O is released from the system (range between 0.1 and 10%). Finally, nitrate is taken up by a sink pool representing for example plant uptake and denitrification. Also in this step, small amounts of N2O are released (range 1 to 10%). Select the appropriate model among the Threep... models.
 
+# We choose the ThreepSeriesModel() because the three pools are linked in series
+# and there is no feedback between the different pools.
+
 ```{r}
 
 
