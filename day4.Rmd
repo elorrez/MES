@@ -74,7 +74,18 @@ The release flux of ammonium is higher than that of nitrate becuse the decomposi
 
 3. Based on the model output, calculate the isotopic delta value for ammonium (use a fractionation factor of 𝜀=-20) according to the closed system Rayleigh equation 𝛿𝑠𝑢𝑏𝑠𝑡𝑟𝑎𝑡=𝛿𝑠𝑢𝑏𝑠𝑡𝑟𝑎𝑡,0+𝜀 ln (𝑓) . The lecture material tells you about the residual fraction f.
 ```{r}
+deltas0 = 0.005
+f = numeric(length(t))
 
+for (i in 2:length(t)){
+  f[i] = Rt[i]/Ct[i-1]
+}
+
+deltas = numeric(length(t))
+for (i in 1:length(t)){
+  deltas[i] =  deltas0 * -20 *log(f[i])
+}
+deltas
 ```
 
 4. Show if the delta value of ammonium a sensitive parameter for the amount of N2O produced during nitrification. Dont forget to consider mixing!
