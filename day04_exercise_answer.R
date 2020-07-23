@@ -52,13 +52,6 @@ for(i in 1:3){
 
 f <- 1 - head(n_release[,1], -1) / tail(n_pools[, 1], -1)
 
-
-delta <- numeric(length(f) + 1)
-delta[1] <- 5
-for(i in 2:(length(delta) -1)){
-  delta[i] <- delta[i-1] - 20 * log(f[i])
-}
-
 delta <- numeric(length(f))
 delta[] <- 5
 for(i in 3:(length(delta))){
@@ -66,11 +59,38 @@ for(i in 3:(length(delta))){
   delta[i] <- delta[i] - 20 * log(f[i])
 }
 
+# task 4
 
+helper <- function(a21){
+  time <- seq(1/12, 100, 1/12)
+  
+  input <- 10
+  
+  ks <- c(0.8, 0.7, 0.09)
+  
+  a21 <- (1 - a21) * 0.8
+  a32 <- 0.95 * 0.7
+  model_out <- ThreepSeriesModel(t = time, ks = ks, a21 = a21,
+                                 a32 = a32, C0 = init, In = 10)
+  
+  n_pools <- getC(model_out)
+  n_release <- getReleaseFlux(model_out)
+  
+  f <- 1 - head(n_release[,1], -1) / tail(n_pools[, 1], -1)
+  
+  delta <- numeric(length(f))
+  delta[] <- 5
+  for(i in 3:(length(delta))){
+    delta[i] <- delta[i-1] * n_pools[i-1,1] / (input + n_pools[i-1,1]) + 5 * input / (input + n_pools[i-1,1]) 
+    delta[i] <- delta[i] - 20 * log(f[i])
+  }
+  
+  return(tail(delta, 1))
+}
 
+sens_alpha <- sapply(seq(0.001, 0.1, 0.005), helper)
 
-f2 <- tail(n_pools[,1], -1) / head(n_pools[, 1], -1)
-
+plot(seq(0.001, 0.1, 0.005), sens_alpha, xlab = "alpha", ylab = "delta", pch = 20)
 
 
 
