@@ -48,7 +48,28 @@ for(i in 1:3){
   if(i > 1) lines(time, n_release[, i], col = i)
 }
 
+# task3
 
+f <- 1 - head(n_release[,1], -1) / tail(n_pools[, 1], -1)
+
+
+delta <- numeric(length(f) + 1)
+delta[1] <- 5
+for(i in 2:(length(delta) -1)){
+  delta[i] <- delta[i-1] - 20 * log(f[i])
+}
+
+delta <- numeric(length(f))
+delta[] <- 5
+for(i in 3:(length(delta))){
+  delta[i] <- delta[i-1] * n_pools[i-1,1] / (input + n_pools[i-1,1]) + 5 * input / (input + n_pools[i-1,1]) 
+  delta[i] <- delta[i] - 20 * log(f[i])
+}
+
+
+
+
+f2 <- tail(n_pools[,1], -1) / head(n_pools[, 1], -1)
 
 
 
