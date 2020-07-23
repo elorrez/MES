@@ -1,1 +1,30 @@
+---
+title: "exc day 4: Isotope Calculation"
+author: Manuel, Niklas, Eva
+output: html_notebook
+---
+
+1. Create a model in which the ammonium pool is supplied by Mineralization of SOM. Ammonium is subsequently nitrified to nitrate. During the process, N2O is released from the system (range between 0.1 and 10%). Finally, nitrate is taken up by a sink pool representing for example plant uptake and denitrification. Also in this step, small amounts of N2O are released (range 1 to 10%). Select the appropriate model among the Threep... models.
+
+```{r}
+
+
+```
+
+2. Use k-rates of 0.8, 0.7, 0.09 and assume mineralization of 10 units at a delta value of 5per mil to run the model for 100 years at monthly resolution. Explain the results (use getC(model) and getReleaseFlux(model))
+```{r}
+
+```
+
+
+3. Based on the model output, calculate the isotopic delta value for ammonium (use a fractionation factor of 𝜀=-20) according to the closed system Rayleigh equation 𝛿𝑠𝑢𝑏𝑠𝑡𝑟𝑎𝑡=𝛿𝑠𝑢𝑏𝑠𝑡𝑟𝑎𝑡,0+𝜀 ln (𝑓) . The lecture material tells you about the residual fraction f.
+```{r}
+
+```
+
+4. Show if the delta value of ammonium a sensitive parameter for the amount of N2O produced during nitrification. Dont forget to consider mixing!
+
+```{r}
+
+```
 
